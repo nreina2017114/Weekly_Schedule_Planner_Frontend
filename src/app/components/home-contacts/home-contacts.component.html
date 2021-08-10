@@ -1,0 +1,81 @@
+<body>
+  
+<div id="cards">
+    <div class="card mio" style="width: 18rem;" *ngFor="let contact of contacts; let i = index" id="vista">
+        <img src="../../../assets/img/usuario.png"  alt="...">
+        <div class="card-body" >
+          <h5 class="card-title">{{contact.name}} {{i}}</h5>
+          <p class="card-text">Lastname: {{contact.lastname}}</p>
+          <p class="card-text">Phone: {{contact.phone}}</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+          (click)="getContact(contact)">Update</button>
+          <a  class="btn btn-danger  mx-2" data-toggle="modal" data-target="#myModal" (click)="getContact(contact)">Remove</a>
+          <a  class="btn btn-dark" data-toggle="modal" data-target="" routerLink="/listar-tarea">Tareas</a>
+
+        </div>
+      </div>
+</div>
+  
+</body>
+
+  <!-- Modal Para actualizar contacto-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <form class="form-signin">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Update this contact</h1>
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input [(ngModel)]="contactSelected.name" name="name" class="form-control" ype="text" id="inputName" placeholder="your name">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputLastname">Lastname</label>
+                        <input [(ngModel)]="contactSelected.lastname" name="lastname" class="form-control" type="text" id="inputLastname" placeholder="lastname">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">Phone</label>
+                        <input [(ngModel)]="contactSelected.phone" name="phone" class="form-control" type="number" id="inputPhone" placeholder="phone">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="updateContact()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PARA ELIMINAR CONTACTO-->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalRemove" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalRemove">Danger Zone!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span class="mt-5 mb-3 text-muted text-center">Are you shure to delte this contact?</span>
+          <h4 class="text-center">{{contactSelected.name}}</h4>
+          <h3 class="text-center">¡Esta acción es irreversible!</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" data-dismiss="modal" class="btn btn-danger" (click)="removeContact()">I'm sure</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,187 @@
+<body>
+  
+
+<div class="container mt-0" >
+  <div class="row">
+      <div class="col-lg-30 offset-lg-2">
+          <div class="card text-center">
+              <div class="card-body">
+                  <span class="titulo">
+                      <h1><b><i>LISTADO DE TAREAS</i></b></h1>
+                  </span>
+                  <br>
+
+        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="" routerLink="/crear-tarea">Agregar Tarea</button>
+        <br>
+        <br>
+<table id="tareasPDF" class="table table-striped mt-3" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Urgencia</th>
+        <th scope="col">Importancia</th>
+        <th scope="col">Acciones</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tar of tareasList; let i = index">
+        <th scope="row">{{i}}</th>
+        <td>{{tar.nameHomework}}</td>
+        <td>{{tar.description}}</td>
+        <td>{{tar.urgencyLevel}}</td>
+        <td>{{tar.importanceLevel}}</td>
+        <td>
+
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditarTarea"
+                (click)="obtenerTareaId(tar._id)">Editar</button>
+
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminarTarea"
+                (click)="obtenerTareaId(tar._id)">Eliminar</button>
+
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalVerTarea"
+                (click)="obtenerTareaId(tar._id)">Ver</button>
+              </div>
+        </td>
+
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="" data-target="" routerLink="/homeContacts">Volver</button>
+
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+<br>
+</body>
+<!-- Modal Editar Tarea -->
+<div class="modal fade" id="modalEditarTarea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Tarea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label"> Nombre de la Tarea</label>
+            <input type="text" class="form-control" id="inputNombre" 
+            name="nameHomework" #nameHomework="ngModel" [(ngModel)]="tareaIDModel.nameHomework" > 
+          </div>
+
+          <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripcion</label>
+            <input type="text" class="form-control" id="inputDescripcion"
+            name="description" #description="ngModel" [(ngModel)]="tareaIDModel.description" > 
+          </div>
+
+          <div class="mb-3">
+            <label for="inputUrgencia" class="form-label">Nivel Urgencia</label>
+            <input type="number" class="form-control" id="inputUrgencia"
+            name="urgencyLevel" #urgencyLevel="ngModel" [(ngModel)]="tareaIDModel.urgencyLevel" > 
+            
+          </div>
+
+          <div class="mb-3">
+            <label for="inputImportancia" class="form-label">Nivel Importancia</label>
+            <input type="text" class="form-control" id="inputImportancia"
+            name="importanceLevel" #importanceLevel="ngModel" [(ngModel)]="tareaIDModel.importanceLevel" > 
+            
+          </div>
+          
+          
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="editarTarea()">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Ver Tarea -->
+<div class="modal fade" id="modalVerTarea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver Tarea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label"> Nombre de la Tarea</label>
+            <input type="text" class="form-control" id="inputNombre" 
+            name="nameHomework" #nameHomework="ngModel" [(ngModel)]="tareaIDModel.nameHomework" disabled> 
+          </div>
+
+          <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripcion</label>
+            <input type="text" class="form-control" id="inputDescripcion"
+            name="description" #description="ngModel" [(ngModel)]="tareaIDModel.description" disabled> 
+          </div>
+
+          <div class="mb-3">
+            <label for="inputUrgencia" class="form-label">Nivel Urgencia</label>
+            <input type="number" class="form-control" id="inputUrgencia"
+            name="urgencyLevel" #urgencyLevel="ngModel" [(ngModel)]="tareaIDModel.urgencyLevel" disabled> 
+            
+          </div>
+
+          <div class="mb-3">
+            <label for="inputImportancia" class="form-label">Nivel Importancia</label>
+            <input type="text" class="form-control" id="inputImportancia"
+            name="importanceLevel" #importanceLevel="ngModel" [(ngModel)]="tareaIDModel.importanceLevel" disabled> 
+            
+          </div>
+          
+          
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Eliminar Tarea -->
+<div class="modal fade" id="modalEliminarTarea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Tarea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estas seguro de Eliminar la Tarea | {{tareaIDModel.nameHomework}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" 
+        (click)="eliminarTarea(tareaIDModel._id)">Eliminar Tarea</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

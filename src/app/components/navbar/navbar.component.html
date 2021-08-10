@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../../assets/img/lOGO333.png" alt="" width="37" height="34" class="d-inline-block align-text-top">
+        W S P
+      </a>      <!--quitar "bs" a las propiedas-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" *ngIf="token == null">
+            <a class="nav-link" routerLink="/home" routerLinkActive='Active'>Home</a>
+          </li>
+          <li class="nav-item" *ngIf="token == null">
+            <a class="nav-link" routerLink="/register" routerLinkActive='active'>Register</a>
+          </li>
+          <li class="nav-item" *ngIf="token == null">
+            <a class="nav-link" routerLink="/login" routerLinkActive='active'>Login</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="token != null">
+              <!--quitar "bs" a las propiedades-->
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              More Options
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/user">Account & Edit</a></li>
+              <li *ngIf="user.role == 'ROLE_ADMIN'"><a routerLink="/saveUser" class="dropdown-item">Save user</a></li>
+            <li *ngIf="user.role == 'ROLE_ADMIN'"><a routerLink="/listUsers" class="dropdown-item">List users</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logOut()">Log Out</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" *ngIf="token != null">
+            <a class="nav-link" routerLink="/homeContacts" routerLinkActive='Active'>All contacts</a>
+          </li>
+          <li class="nav-item" *ngIf="token != null">
+            <a class="nav-link" routerLink="/saveContact" routerLinkActive='Active'>Save contact</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="token != null">
+          <li class="nav-text">
+            <a class="nav-link">{{user.username}}</a>
+          </li>
+          <li>
+            <img *ngIf="user.image" id="imgUser" src="{{uri+'getImage/'+user.image}}" alt="user image">
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>

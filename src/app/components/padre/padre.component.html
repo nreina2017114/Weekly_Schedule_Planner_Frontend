@@ -1,0 +1,19 @@
+<h1>{{title}}</h1>
+
+<label>Nombre: </label>
+<input type="text" [(ngModel)]="nombre" (keyup)="mostarInfo()">
+<br>
+<label>Apellido: </label>
+<input type="text" [(ngModel)]="apellido" (keyup)="mostarInfo()">
+<p>Edad: {{edad}}</p>
+
+<div *ngIf="infoHijo">
+    <h3>Información del hijo</h3>
+    <h4>Nombre: {{infoHijo.nombre}}</h4>
+    <h4>Apellido: {{infoHijo.apellido}}</h4>
+    <h4>Carrera: {{infoHijo.carrera}}</h4>
+</div>
+
+
+<hr>
+<app-hijo [nombrePadre]="nombre" [apellidoPadre]="apellido" [edad]="edad" (enviarDatos)="obtenerDatos($event)"></app-hijo>

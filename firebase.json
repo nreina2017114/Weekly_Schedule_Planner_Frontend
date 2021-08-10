@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/AgendaWeb-Front",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

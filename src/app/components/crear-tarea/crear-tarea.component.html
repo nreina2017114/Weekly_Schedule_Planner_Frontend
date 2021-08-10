@@ -1,0 +1,67 @@
+<body>
+  
+
+  <div id="void">
+
+<div class="container mt-0" >
+  <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+          <div class="card text-center">
+              <div class="card-body">
+                  <span class="titulo">
+                      <h3><b><i>Agregar Tarea</i></b></h3>
+                  </span>
+                  <br>
+
+
+                  <div class="row justify-content-md-center">
+                    <div class="col col-lg-17">
+                      <form>
+                          <div class="mb-3">
+                              <label for="inputName" class="form-label">Nombre Tarea</label>
+                              <input type="text" class="form-control" id="inputName" name="nameHomework" 
+                              #nameHomework="ngModel" [(ngModel)]="tareaModel.nameHomework">
+                          </div>
+              
+                          <div class="mb-3">
+                              <label for="inputDescription" class="form-label">Descripcion</label>
+                              <input type="text" class="form-control" id="inputDescription" name="description"
+                              #description="ngModel" [(ngModel)]="tareaModel.description">
+                         </div>
+              
+                          <div class="mb-3">
+                            <label for="inputUrgencyLevel" class="form-label">Nivel de Urgencia</label>
+                            <input type="number" class="form-control" id="inputUrgencyLevel" name="urgencyLevel"
+                            #urgencyLevel="ngModel" [(ngModel)]="tareaModel.urgencyLevel">
+                          </div>
+                          
+                          <div class="mb-3">
+                            <label for="inputImportanceLevel" class="form-label">Nivel de Importancia</label>
+                            <input type="text" class="form-control" id="inputImportanceLevel" name="importanceLevel"
+                            #importanceLevel="ngModel" [(ngModel)]="tareaModel.importanceLevel">
+                          </div>
+                          
+                          <div class="d-grid gap-2 d-md-block">
+
+                          <button class="btn btn-dark float-left" routerLink="/listar-tarea" >VOLVER</button>
+                          <button class="btn btn-primary float-right" (click)="registrarTarea()">GUARDAR</button>
+                        </div>
+
+                        </form>
+                        
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                  
+    </div>  
+  </div>
+  
+</div>
+</div>
+</div>
+    
+
+
+</body>

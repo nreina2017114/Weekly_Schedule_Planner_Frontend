@@ -1,0 +1,14 @@
+<h2>{{title}}</h2>
+
+<p>Nombre: {{nombre}}</p>
+<p>Apellido: {{apellido}}</p>
+<p>Carrera: {{carrera}}</p>
+
+<button (click)="enviarDatosEvento()">Enviar datos al padre</button>
+
+<div *ngIf="nombrePadre && apellidoPadre">
+    <h3>Información del padre:</h3>
+    <h4>Nombre: {{nombrePadre}}</h4>
+    <h4>Apellido: {{apellidoPadre}}</h4>
+    <h4>Edad: {{edad}}</h4>
+</div>

@@ -1,0 +1,51 @@
+<div id="body" class="text-center" [@fadeIn]>
+    <form class="form-signin" #register="ngForm" (ngSubmit)="onSubmit(register)">
+        <div class="alert alert-danger" role="alert" *ngIf="!userSaved && message">
+            Message: {{message}}
+          </div>
+          <div class="alert alert-success" role="alert" *ngIf="userSaved">
+            Message: {{message}} Logeate con: {{userSaved}}
+          </div>
+        <img class="mb-4" width="72" height="72" src="../../../assets/img/candado.png" alt="logo agenda">
+        <h1 class="h3 mb-3 font-weight-normal">Create your account</h1>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input [(ngModel)]="user.name" name="name" #name="ngModel" class="form-control" ype="text" id="inputName" placeholder="your name" required>
+            <span *ngIf="!name.valid && name.touched">
+                Campo obligatorio
+            </span>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputUsername">Username</label>
+                <input [(ngModel)]="user.username" name="username" #username="ngModel" class="form-control" type="text" id="inputUsername" placeholder="username" required>
+                <span *ngIf="!username.valid && username.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Password</label>
+                <input [(ngModel)]="user.password" name="password" #password="ngModel" class="form-control" type="password" id="inputPassword" placeholder="password" required>
+                <span *ngIf="!password.valid && password.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input [(ngModel)]="user.email" name="email" #email="ngModel" class="form-control" type="email" id="inputEmail" placeholder="email" required>
+            <span *ngIf="!email.valid && email.touched">
+                Campo obligatorio
+            </span>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" name="checkbox" required>
+                <label class="form-check-label" for="gridCheck">
+                    I accept the terms and conditions
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!register.form.valid">Sign up</button>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<body>
+  
+<br>
+<h1 class="text-center">Crear Contacto</h1>
+<hr>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../../assets/img/logo.png" style="width: 100px; height:100px;" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form (ngSubmit)="onSubmit(createContact)" #createContact="ngForm">
+        <input [(ngModel)]="contact.name" type="text" id="login" class="fadeIn second" name="name" placeholder="NAME" required>
+        <input [(ngModel)]="contact.lastname" type="text" id="password" class="fadeIn third" name="lastname" placeholder="LASTNAME" required>
+        <input [(ngModel)]="contact.phone" type="number" id="password" class="fadeIn third" name="phone" placeholder="PHONE" required>
+        <input type="submit" class="fadeIn fourth" value="Save" [disabled]="!createContact.form.valid">
+      </form>
+  
+    </div>
+  </div>
+
+</body>

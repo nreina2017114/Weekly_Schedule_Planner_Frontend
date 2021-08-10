@@ -1,0 +1,24 @@
+<div [@fadeIn] id="body" class="text-center">
+    <form class="form-signin" #login="ngForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="token" class="alert alert-success" role="alert">
+            Logeado
+        </div>
+        <div *ngIf="!token && message" class="alert alert-success" role="alert">
+            No logeado {{message}}
+          </div>
+        <img class="mb-4" width="335" height="100" src="../../../assets/img/logoWeekly.png" alt="logo agenda">
+        <h1 class="h3 mb-3 font-weight-normal">Plase sign in</h1>
+        <label class="sr-only" for="inputUsername"></label>
+        <input [(ngModel)]="user.username" name="username" class="form-control" type="text" id="inputUsername" placeholder="username or email" required>
+       <br> <label class="sr-only" for="inputPassword"></label>
+        <input [(ngModel)]="user.password" name="username" class="form-control" type="password" id="inputPassword" placeholder="password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me">
+                Remember me
+            </label>
+        </div>
+        <button [disabled]="!login.form.valid" class="btn btl-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
+    </form>
+</div>

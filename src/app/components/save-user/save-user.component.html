@@ -1,0 +1,53 @@
+<body class="text-center">
+    <form class="form-signin" #createUser="ngForm" (ngSubmit)="onSubmit(createUser)">
+        <img class="mb-4" src="../../../assets/img/logo.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Create account</h1>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input [(ngModel)]="user.name" #name="ngModel" name="name" type="text" class="form-control" id="inputName" placeholder="name" required>
+            <span *ngIf="!name.valid && name.touched">
+              Campo obligatorio
+            </span>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputUsername">Username</label>
+            <input [(ngModel)]="user.username" #username="ngModel" name="username" type="text" class="form-control" id="inputUsername" placeholder="username" required>
+            <span *ngIf="!username.valid && username.touched">
+              Campo obligatorio
+            </span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input [(ngModel)]="user.password" #password="ngModel" name="password" type="password" class="form-control" id="inputPassword4" placeholder="password" required>
+            <span *ngIf="!password.valid && password.touched">
+              Campo obligatorio
+            </span>
+          </div>
+        </div>
+          <div class="form-group">
+            <label for="inputEmail4">Email</label>
+            <input [(ngModel)]="user.email" name="email" #email="ngModel" type="email" class="form-control" id="inputEmail4" placeholder="email" required>
+            <span *ngIf="!email.valid && email.touched">
+              Campo obligatorio
+            </span>
+          </div>
+  
+          <div class="form-group">
+            <label for="select">Select role:</label>
+            <select [(ngModel)]="user.role" name="role" class="form-control" id="select">
+              <option *ngFor="let option of roleOptions" [value]="option">{{option}}</option>
+            </select>
+          </div>
+  
+  <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                I accept the terms and conditions
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!createUser.form.valid">Sign in</button>
+      </form>
+  </body>
